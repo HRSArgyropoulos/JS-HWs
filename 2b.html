@@ -10,7 +10,8 @@
         "use strict";
 
         let married = confirm("Are you married? \nPress \'Ok' for Yes and \'Cancel' for No");
-        let numKids = prompt("How many kids do you have?");
+        let numKids = parseInt(prompt("How many kids do you have?"));
+        console.log(numKids);
 
         if (married) {
             document.write("Married and ");
@@ -19,21 +20,23 @@
         }
 
         switch (numKids) {
-            case "0":
+            case 0:
                 document.write("no kids");
                 break;
-            case "1":
+            case 1:
                 document.write("with 1 kid");
                 break;
-            case "2":
+            case 2:
                 document.write("with 2 kids");
                 break;    
-            case "3":
+            case 3:
                 document.write("with 3 kids");
                 break;
-            case "4":
+            case 4:
                 document.write("with many kids");
                 break;
+            default:
+                document.write("invalid number of kids");    
         }
     </script>
 </body>
