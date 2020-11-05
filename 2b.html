@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2b</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        let married = confirm("Are you married? \nPress \'Ok' for Yes and \'Cancel' for No");
+        let numKids = prompt("How many kids do you have?");
+
+        if (married) {
+            document.write("Married and ");
+        } else {
+            document.write("Not married and ");
+        }
+
+        switch (numKids) {
+            case "0":
+                document.write("no kids");
+                break;
+            case "1":
+                document.write("with 1 kid");
+                break;
+            case "2":
+                document.write("with 2 kids");
+                break;    
+            case "3":
+                document.write("with 3 kids");
+                break;
+            case "4":
+                document.write("with many kids");
+                break;
+        }
+    </script>
+</body>
+</html>
