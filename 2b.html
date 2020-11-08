@@ -9,35 +9,37 @@
     <script>
         "use strict";
 
-        let married = confirm("Are you married? \nPress \'Ok' for Yes and \'Cancel' for No");
-        let numKids = parseInt(prompt("How many kids do you have?"));
+        let married = confirm('Are you married? \nPress \'Ok\' for Yes and \'Cancel\' for No');
+        let numKids = parseInt(prompt('How many kids do you have?'));
         console.log(numKids);
 
+        let marriageState = 'Not married'; // or (if,else) without initializing
         if (married) {
-            document.write("Married and ");
-        } else {
-            document.write("Not married and ");
+            marriageState = 'Married';
         }
 
+        let kidsState; // kidsState = ''; -no need- or kidsState = 'no kids' remove first case
         switch (numKids) {
             case 0:
-                document.write("no kids");
+                kidsState = 'no kids';
                 break;
             case 1:
-                document.write("with 1 kid");
+                kidsState = 'with 1 kid';
                 break;
             case 2:
-                document.write("with 2 kids");
+                kidsState = 'with 2 kids';
                 break;    
             case 3:
-                document.write("with 3 kids");
+                kidsState = 'with 3 kids';
                 break;
             case 4:
-                document.write("with many kids");
+                kidsState = 'with many kids';
                 break;
             default:
-                document.write("invalid number of kids");    
+                kidsState = 'invalid number of kids';    
         }
+
+        document.write(marriageState + ' and ' + kidsState);
     </script>
 </body>
 </html>
