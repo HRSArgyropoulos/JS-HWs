@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        for (let i=1; i<=100; i++) console.log(i);
+        for (let i=1; i<=100; i++) {
+            if (i%3===0) { //i divides 3
+                if (i%5===0) { //i divides both 3 and 5
+                    console.log('FizzBuzz');
+                } else { //i divides 3 but not 5
+                    console.log('Fizz');
+                }
+            } else { //i does not divide 3
+                if (i%5===0) {  //i does not divide 3 but divides 5
+                    console.log('Buzz');
+                } else { //i does not divide 3 and 5 so stays as it is
+                    console.log(i);
+                }
+            }
+        }            
+    </script>
+</body>
+</html>
