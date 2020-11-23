@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess the number</title>
 </head>
+
 <body>
     <script>
         "use strict";
-        alert('Think and memorize a number between 1 and 100');
-        let num = 50;
-        let numberFound,bigger = false;
-        let min = 1,max = 100;
-        let numberOfTries= 1;
+        const N = 100; // from 1 to N (limits)
+        alert(`Think and memorize a number between 1 and ${N}`);
+        let numberFound, bigger = false;
+        let min = 1, max = N;
+        let num = Math.floor(N / 2);
+        let numberOfTries = 1;
         numberFound = confirm(`Is you number ${num} ?`);
-        while (!numberFound && numberOfTries<7) {
+        let maxTries = Math.floor(Math.log(N) / Math.log(2)) + 1; // outside of while check, so it gets calculated only once
+        //console.log(maxTries);
+        while (!numberFound && numberOfTries < maxTries) {
             numberOfTries++;
             bigger = confirm(`Is your number bigger than ${num} ? If 'Yes' press Ok`);
-            bigger ? min=num+1 : max=num-1;
-            num = Math.floor((min+max)/2);
-            numberFound = confirm(`Is you number ${num} ?`); 
+            bigger ? min = num + 1 : max = num - 1; // min = bigger ? num+1 : min;  max = bigger ? max : num-1;
+            num = Math.floor((min + max) / 2);
+            numberFound = confirm(`Is you number ${num} ?`);
         }
-        numberFound ? document.write(`I found the number you were thinking about ${num} in ${numberOfTries} try(ies)!`) : document.write('There is something fishy about your answers');
+        let msg; // Message Print
+        /* //1st way
+        if (numberFound) { 
+            msg = `I found the number you were thinking about ${num} in ${numberOfTries} `
+            msg += numberOfTries === 1 ? 'try!' : 'tries!';  // or merge the two msg with one ternary operator
+        } else {
+            msg = 'There is something fishy about your answers';
+        }
+        document.write(msg); */
+        //2nd way
+        msg = numberFound ?
+            numberOfTries === 1 ? `I found the number you were thinking about ${num} in ${numberOfTries} try!` : `I found the number you were thinking about ${num} in ${numberOfTries} tries!`
+            : 'There is something fishy about your answers!';
+        document.write(msg);
     </script>
 </body>
+
 </html>

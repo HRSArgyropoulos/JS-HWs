@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FizzBuzz</title>
 </head>
+
 <body>
     <script>
         "use strict";
-        for (let i=1; i<=100; i++) console.log(i);
-        for (let i=1; i<=100; i++) {
-            if (i%3===0) { //i divides 3
-                if (i%5===0) { //i divides both 3 and 5
-                    console.log('FizzBuzz');
-                } else { //i divides 3 but not 5
-                    console.log('Fizz');
-                }
-            } else { //i does not divide 3
-                if (i%5===0) {  //i does not divide 3 but divides 5
-                    console.log('Buzz');
-                } else { //i does not divide 3 and 5 so stays as it is
-                    console.log(i);
-                }
+        for (let i = 1; i <= 100; i++) {
+            let msg = ''; //empty string
+            if (i % 3 === 0) { //first part i divides 3 add the word Fizz
+                msg += 'Fizz';
             }
-        }            
+            if (i % 5 === 0) { //only if i divides 5 add the word Buzz. empty msg(does not divide 3)+Buzz=Buzz Fizz(i divides 3)+Buzz=FizzBuzz
+                msg += 'Buzz';
+            }
+            if (msg === '') { //i does not divide 3 and 5 (never changed its message)
+                msg = `${i}`;
+            }
+            console.log(msg);
+        }
+            /* if (i%3===0) { //i divides 3
+            if (i%5===0) { //i divides both 3 and 5
+                msg = 'FizzBuzz';
+            } else { //i divides 3 but not 5
+                msg = 'Fizz';
+            }
+        } else { //i does not divide 3
+            if (i%5===0) {  //i does not divide 3 but divides 5
+                msg = 'Buzz';
+            } else { //i does not divide 3 and 5 so stays as it is
+                msg = `${i}`; // doesnt really matter if msg = i; its just the type that changes
+            }
+        } */
     </script>
 </body>
+
 </html>
