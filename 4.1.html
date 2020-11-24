@@ -22,16 +22,18 @@
         console.log(planets);
         planets.pop() // or planets.splice(length-1, 1);    Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune
         console.log(planets);
-
+        
         //document.write(planets);
         
         /* for (let i=0;i<planets.length;i++) {
             document.write(planets[i] + ' '); //`${planets[i]} `
         } */
         
-        for (const element of planets) {
+        /* for (const element of planets) {
             document.write(element + ' ');
-        }
+        } */
+
+        document.write('The final planets are: ', planets.join(', '));
 
     </script>
 </body>
