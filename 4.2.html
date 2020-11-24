@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.2 array</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        const array=[];
+        let newElem;
+        while (true) {
+            newElem = prompt('Give me an element');
+            if (newElem != '') {
+                array.push(newElem);
+            } else {
+                break;
+            }
+        }
+        console.log(array);
+        let sorted = true;
+        for (let index=0; index<array.length-1; index++) {
+            if (array[index]>=array[index+1]) {
+                sorted = false;
+                break;
+            }
+        }
+        let output = sorted ? 'Sorted.' : 'Not Sorted';
+        alert(output);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.2alternative</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        let max;
+        let newElem;
+        let count = 0;
+        let sorted = true;
+        while (sorted) { 
+            newElem = prompt('Give me an element');
+            if (newElem === '') break; //exit the while if empty
+            if (count === 0) max = newElem; //first number make him max. could also have this outside of while with modifications
+            else {
+                if (newElem > max) { //continue the input (still sorted)
+                    max = newElem;
+                } else {
+                    sorted = false; //and next check will exit the while
+                }
+            }    
+            count++; //numbers that have been given
+        }
+        let output;
+        if (count > 1) {
+            output = sorted ? 'Sorted.' : 'Not Sorted';
+        } else if (count === 1) {
+            output = 'Only one number has been inputted';
+        } else {
+            output = 'No numbers has been inputted'
+        }
+        alert(output);                 
+    </script>
+</body>
+
+</html>
