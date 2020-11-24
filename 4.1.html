@@ -16,9 +16,9 @@
         console.log(planets);
         planets.unshift('Mercury','Venus','Earth','Earth\'s Moon'); //  Mercury Venus Earth Earth's Moon Mars Saturn Uranus Neptune Pluto 
         console.log(planets);
-        planets.splice( 5, 0, 'Jupiter'); //    Mercury Venus Earth Earth's Moon[3] Mars[4] Jupiter Saturn[5] Uranus Neptune Pluto
+        planets.splice(planets.indexOf('Saturn'), 0, 'Jupiter'); //    Mercury Venus Earth Earth's Moon[3] Mars[4] Jupiter Saturn[5] Uranus Neptune Pluto
         console.log(planets);
-        planets.splice(3, 1); //    Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune Pluto[length-1]
+        planets.splice(planets.indexOf('Earth\'s Moon'), 1); //    Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune Pluto[length-1]
         console.log(planets);
         planets.pop() // or planets.splice(length-1, 1);    Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune
         console.log(planets);
