@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        const planets = ['Mars', 'Saturn', 'Uranus',]; //   Mars Saturn Uranus (initialize array)
+        console.log(planets);
+        planets.push('Neptune','Pluto'); // Mars Saturn Uranus Neptune Pluto 
+        console.log(planets);
+        planets.unshift('Mercury','Venus','Earth','Earth\'s Moon'); //  Mercury Venus Earth Earth's Moon Mars Saturn Uranus Neptune Pluto 
+        console.log(planets);
+        planets.splice( 5, 0, 'Jupiter'); //    Mercury Venus Earth Earth's Moon[3] Mars[4] Jupiter Saturn[5] Uranus Neptune Pluto
+        console.log(planets);
+        planets.splice(3, 1); //    Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune Pluto[length-1]
+        console.log(planets);
+        planets.pop() // or planets.splice(length-1, 1);    Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune
+        console.log(planets);
+
+        //document.write(planets);
+        
+        /* for (let i=0;i<planets.length;i++) {
+            document.write(planets[i] + ' '); //`${planets[i]} `
+        } */
+        
+        for (const element of planets) {
+            document.write(element + ' ');
+        }
+
+    </script>
+</body>
+
+</html>
