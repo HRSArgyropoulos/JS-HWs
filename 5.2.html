@@ -29,12 +29,28 @@
             return flag;
         };
 
-        let word;
+        /* let word;
         while (true) {
             word = userInput();
             if (containsNotAllowedChars(word) === false) break;
         }
-        console.log(word);
+        console.log(word); */
+
+        if (!containsNotAllowedChars('This is a test') &&
+
+            containsNotAllowedChars('This is a <test>') &&
+
+            containsNotAllowedChars('This is @ test') &&
+
+            containsNotAllowedChars('T#is is a test')) {
+
+            alert('All good!');
+
+        } else {
+
+            alert('Something is not right');
+
+        }
 
     </script>
 </body>
