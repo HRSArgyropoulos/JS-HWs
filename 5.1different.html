@@ -13,50 +13,51 @@
 
         //Bugs: 1) When max on the last position 2) When input only one word 3) When input is " " (space)
 
-        const longestWords = (positions,sentence) => {
+        const longestWords = (positions, sentence) => {
             let words = [];
-                for (const pos of positions[0]) { // where the position indexes are
-                    let word="";
-                    for (let i=0; i<positions[1]; i++) { // where the max characters of word counter is
-                        word+=sentence[pos+i];
-                    } 
-                    words.push(word);
+            for (const pos of positions[0]) { // where the position indexes are
+                let word = "";
+                for (let i = 0; i < positions[1]; i++) { // where the max characters of word counter is
+                    word += sentence[pos + i]; 
                 }
-                return words;
+                words.push(word,pos+1); //more user friendly the n-nth position not index
+            }
+            return words;
         };
 
         const longestWordsPositions = (str) => {
-                let maxWordCount = 0;
-                let wordCount = 0;
-                let positions = []; //array of max positions
-                let curPos = 0; //the starting index of the current word
-                for (const element of str) {
-                    if (element === ' ') { //space between words
-                        if (wordCount >= maxWordCount) {
-                            if (wordCount > maxWordCount) { positions = []; } //empty array as we have a new max
-                            maxWordCount = wordCount; 
-                            positions.push(curPos);
-                        }
-                        curPos+=wordCount+1; //previous position + this max word length + space character
-                        wordCount=0;
-                    } else { wordCount++; }
-                }
-                return [positions,maxWordCount]; //2 dimensional array
-            };
-        
-        
+            //we save positions so we do not have to generate the word every time and we ll do it in longestWords function only for the max words to improve code efficiency 
+            let maxWordCount = 0;
+            let wordCount = 0;
+            let positions = []; //array of max positions
+            let curPos = 0; //the starting index of the current word
+            for (const element of str) {
+                if (element === ' ') { //space between words
+                    if (wordCount >= maxWordCount) {
+                        if (wordCount > maxWordCount) { positions = []; } //empty array as we have a new max
+                        maxWordCount = wordCount;
+                        positions.push(curPos);
+                    }
+                    curPos += wordCount + 1; //previous position + this max word length + space character
+                    wordCount = 0;
+                } else { wordCount++; }
+            }
+            return [positions, maxWordCount]; //2 dimensional array. first we have an array of the position and then we have the length of the max word(s) | objects/record collection more suitable here(?)
+        };
+
         const userInput = () => {
             let input;
-                while (true) {
-                    input = prompt('Enter a phrase');
-                    if (input) { return input; }
-                }
+            while (true) {
+                input = prompt('Enter a phrase');
+                if (input) { return input; }
+            }
         };
-        const input = userInput();
+
+        const input = userInput(); 
         const positions = longestWordsPositions(input);
-        console.log(positions)
-        const words = longestWords (positions,input);
-        console.log(words);
+        console.log("Positions", positions[0]);
+        const words = longestWords(positions, input);
+        console.log("Words", words);
     </script>
 </body>
 
