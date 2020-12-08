@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.2</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        
+        const userInput = () => { //from 5.1diff
+            let input;
+            while (true) {
+                input = prompt('Enter word');
+                if (input) { return input; }
+            }
+        };
+
+        const containsNotAllowedChars = (input) => {
+            const notAllowedChars = ['<','>','@','#'];
+            let flag = false;
+            for (const char of notAllowedChars) {
+                flag = input.indexOf(char) === -1 ? false : true;
+                if (flag===true) break;
+            }
+            return flag;
+        };
+
+        let word = userInput();
+        console.log(containsNotAllowedChars(word));
+        
+    </script>
+</body>
+
+</html>
