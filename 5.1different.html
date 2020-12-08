@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#5 Functions</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+
+        //Bugs: 1) When max on the last position 2) When input only one word 3) When input is " " (space)
+
+        const longestWords = (positions,sentence) => {
+            let words = [];
+                for (const pos of positions[0]) { // where the position indexes are
+                    let word="";
+                    for (let i=0; i<positions[1]; i++) { // where the max characters of word counter is
+                        word+=sentence[pos+i];
+                    } 
+                    words.push(word);
+                }
+                return words;
+        };
+
+        const longestWordsPositions = (str) => {
+                let maxWordCount = 0;
+                let wordCount = 0;
+                let positions = []; //array of max positions
+                let curPos = 0; //the starting index of the current word
+                for (const element of str) {
+                    if (element === ' ') { //space between words
+                        if (wordCount >= maxWordCount) {
+                            if (wordCount > maxWordCount) { positions = []; } //empty array as we have a new max
+                            maxWordCount = wordCount; 
+                            positions.push(curPos);
+                        }
+                        curPos+=wordCount+1; //previous position + this max word length + space character
+                        wordCount=0;
+                    } else { wordCount++; }
+                }
+                return [positions,maxWordCount]; //2 dimensional array
+            };
+        
+        
+        const userInput = () => {
+            let input;
+                while (true) {
+                    input = prompt('Enter a phrase');
+                    if (input) { return input; }
+                }
+        };
+        const input = userInput();
+        const positions = longestWordsPositions(input);
+        console.log(positions)
+        const words = longestWords (positions,input);
+        console.log(words);
+    </script>
+</body>
+
+</html>

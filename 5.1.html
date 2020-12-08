@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#5 Functions</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+
+        const userInput = () => {
+            const arr = [];
+            while (true) {
+                const input = prompt('Enter Word');
+                if (!input) break;
+                arr.push(input);
+            }
+            return arr;
+        };
+
+        const longestWord = (arr) => {
+            let word;
+            let max = 0;
+            arr.forEach(element => {
+                if (element.length >= max) {
+                    word = element;
+                    max = element.length;
+                }
+            });
+            return word;
+        }
+
+        let words = userInput();
+        console.log(`Words: ${words.join(', ')}.`);
+        console.log(`The longest word is: ${longestWord(words)}`);
+    </script>
+</body>
+
+</html>
