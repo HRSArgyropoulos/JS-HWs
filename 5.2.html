@@ -10,7 +10,7 @@
 <body>
     <script>
         "use strict";
-        
+
         const userInput = () => { //from 5.1diff
             let input;
             while (true) {
@@ -20,18 +20,22 @@
         };
 
         const containsNotAllowedChars = (input) => {
-            const notAllowedChars = ['<','>','@','#'];
+            const notAllowedChars = ['<', '>', '@', '#'];
             let flag = false;
             for (const char of notAllowedChars) {
                 flag = input.indexOf(char) === -1 ? false : true;
-                if (flag===true) break;
+                if (flag === true) break;
             }
             return flag;
         };
 
-        let word = userInput();
-        console.log(containsNotAllowedChars(word));
-        
+        let word;
+        while (true) {
+            word = userInput();
+            if (containsNotAllowedChars(word) === false) break;
+        }
+        console.log(word);
+
     </script>
 </body>
 
