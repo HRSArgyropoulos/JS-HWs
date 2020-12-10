@@ -12,8 +12,10 @@
         "use strict";
 
         /* Bugs: 1) [Fixed] When max on the last position(-although the code is not very clean (possibly sone nested ifs can be avoided-) 
-        2) When input only one word 
-        3) When input is " " (space) */
+        2) [Fixed] When input only one word 
+        3) [] When input is " " (space) */
+
+        /*Optimization: I could add " " in the end of array so we do not have a if (situation for the last element)*/
 
         const longestWords = (positions, sentence) => {
             let words = [];
@@ -35,7 +37,7 @@
             let curPos = 0; //the starting index of the current word
             for (let i=0; i<str.length; i++) {
                 if (str[i] === ' ' || i===str.length-1) { //space between words
-                    if (i===str.length-1) {wordCount++;}
+                    if (i===str.length-1) {wordCount++;} //for last element stop the wordcounting (end the word) -> see optimization
                     if (wordCount >= maxWordCount) {
                         if (wordCount > maxWordCount) { positions = []; } //empty array as we have a new max
                         maxWordCount = wordCount;
