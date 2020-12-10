@@ -11,9 +11,9 @@
     <script>
         "use strict";
 
-        /* Bugs: 1) [Fixed] When max on the last position(-although the code is not very clean (possibly sone nested ifs can be avoided-) 
+        /* Bugs[Fixed]: 1) [Fixed] When max on the last position(-although the code is not very clean (possibly sone nested ifs can be avoided-) 
         2) [Fixed] When input only one word 
-        3) [] When input is " " (space) */
+        3) [Fixed] When input is " " (space) */
 
         /*Optimization: I could add " " in the end of array so we do not have a if (situation for the last element)*/
 
@@ -52,9 +52,17 @@
 
         const userInput = () => {
             let input;
+            let flag;
+            let spaceCounter=-1; // if 0 then if empty string was inputted "" then it would return the input as "".length = 0 spacecounter=0
             while (true) {
                 input = prompt('Enter a phrase');
-                if (input) { return input; }
+                if (input[0]===" ") { //if it does not begin with space it wont be empty so no point of checking every character for spaces
+                    spaceCounter=0;
+                    for (const char of input) {
+                        if (char===" ") spaceCounter++;
+                    }
+                }
+                if (input && spaceCounter!=input.length) { return input; }
             }
         };
 
