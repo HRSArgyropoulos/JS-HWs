@@ -13,19 +13,26 @@
 
         /* Bugs[Fixed]: 1) [Fixed] When max on the last position(-although the code is not very clean (possibly sone nested ifs can be avoided-) 
         2) [Fixed] When input only one word 
-        3) [Fixed] When input is " " (space) */
+        3) [Fixed] When input is " " (space)
+        4) [Fixed] Input ___________word -> pushes every space character in words[] */
 
         /*Optimization: I could add " " in the end of array so we do not have a if (situation for the last element)*/
 
-        const longestWords = (positions, sentence) => {
-            let words = [];
-            for (const pos of positions[0]) { // where the position indexes are
+        const longestWords = (positionsobj,sentence) => {
+             let words = [];
+            /*
+            for (const pos of positionsobj.positions) { // where the position indexes are
                 let word = "";
-                for (let i = 0; i < positions[1]; i++) { // where the max characters of word counter is
+                for (let i = 0; i < positionsobj.maxWordCount; i++) { // where the max characters of word counter is
                     word += sentence[pos + i]; 
                 }
                 words.push(word,pos+1); //more user friendly the n-nth position not index
             }
+            */
+            for (let i=0;i<positionsobj.positions.length;i++) {
+                words.push(sentence.slice(positionsobj.positions[i],positionsobj.positions[i]+positionsobj.maxWordCount),positionsobj.positions[i]+1);
+            }
+
             return words;
         };
 
@@ -47,29 +54,21 @@
                     wordCount = 0;
                 } else { wordCount++; }
             }
-            return [positions, maxWordCount]; //2 dimensional array. first we have an array of the position and then we have the length of the max word(s) | objects/record collection more suitable here(?)
+            return {positions,maxWordCount}; //first we have an array of the position and then we have the length of the max word(s)
         };
 
         const userInput = () => {
             let input;
-            let flag;
-            let spaceCounter=-1; // if 0 then if empty string was inputted "" then it would return the input as "".length = 0 spacecounter=0
             while (true) {
-                input = prompt('Enter a phrase');
-                if (input[0]===" ") { //if it does not begin with space it wont be empty so no point of checking every character for spaces
-                    spaceCounter=0;
-                    for (const char of input) {
-                        if (char===" ") spaceCounter++;
-                    }
-                }
-                if (input && spaceCounter!=input.length) { return input; }
+                input = prompt('Enter a phrase').trim();
+                if (input) return input;
             }
         };
 
         const aFunctionLikeSplit = (input) => {
             let arr=[];
             let word="";
-            input += " "; // see optimization
+            //input += " "; // see optimization
             for (const char of input) {
                 if (char!=" ") {
                     word += char;
@@ -78,14 +77,15 @@
                     word="";
                 }
             }
+            arr.push(word);
             return arr;
         };
 
         const input = userInput(); 
         console.log("Words",aFunctionLikeSplit(input));
-        const positions = longestWordsPositions(input);
-        console.log("Positions", positions[0]);
-        const words = longestWords(positions, input);
+        const wordPositions = longestWordsPositions(input);
+        console.log("Positions", wordPositions.positions);
+        const words = longestWords(wordPositions, input);
         console.log("Words", words);
     </script>
 </body>
