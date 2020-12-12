@@ -11,15 +11,8 @@
     <script>
         "use strict";
 
-        /* Bugs[Fixed]: 1) [Fixed] When max on the last position(-although the code is not very clean (possibly sone nested ifs can be avoided-) 
-        2) [Fixed] When input only one word 
-        3) [Fixed] When input is " " (space)
-        4) [Fixed] Input ___________word -> pushes every space character in words[] */
-
-        /*Optimization: I could add " " in the end of array so we do not have a if (situation for the last element)*/
-
-        const longestWords = (positionsobj,sentence) => {
-             let words = [];
+        const longestWords = (positionsobj, sentence) => {
+            let words = [];
             /*
             for (const pos of positionsobj.positions) { // where the position indexes are
                 let word = "";
@@ -29,11 +22,13 @@
                 words.push(word,pos+1); //more user friendly the n-nth position not index
             }
             */
-            for (let i=0;i<positionsobj.positions.length;i++) {
-                words.push(sentence.slice(positionsobj.positions[i],positionsobj.positions[i]+positionsobj.maxWordCount),positionsobj.positions[i]+1);
+            for (let i = 0; i < positionsobj.positions.length; i++) {
+                console.log(
+                    `!Max word found!
+                    ${sentence.slice(positionsobj.positions[i][0], positionsobj.positions[i][0] + positionsobj.maxWordCount)} 
+                    at string index: ${positionsobj.positions[i][0]} 
+                    being the number: ${positionsobj.positions[i][1]} word of the string`);
             }
-
-            return words;
         };
 
         const longestWordsPositions = (str) => {
@@ -42,19 +37,21 @@
             let wordCount = 0;
             let positions = []; //array of max positions
             let curPos = 0; //the starting index of the current word
-            for (let i=0; i<str.length; i++) {
-                if (str[i] === ' ' || i===str.length-1) { //space between words
-                    if (i===str.length-1) {wordCount++;} //for last element stop the wordcounting (end the word) -> see optimization
+            let wordscounter = 0;
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] === ' ' || i === str.length - 1) { //space between words
+                    wordscounter++;
+                    if (i === str.length - 1) { wordCount++; } //for last element stop the wordcounting (end the word) -> see optimization
                     if (wordCount >= maxWordCount) {
                         if (wordCount > maxWordCount) { positions = []; } //empty array as we have a new max
                         maxWordCount = wordCount;
-                        positions.push(curPos);
+                        positions.push([curPos, wordscounter]);
                     }
                     curPos += wordCount + 1; //previous position + this max word length + space character
                     wordCount = 0;
                 } else { wordCount++; }
             }
-            return {positions,maxWordCount}; //first we have an array of the position and then we have the length of the max word(s)
+            return { positions, maxWordCount }; //first we have an array of the position and then we have the length of the max word(s)
         };
 
         const userInput = () => {
@@ -66,27 +63,25 @@
         };
 
         const aFunctionLikeSplit = (input) => {
-            let arr=[];
-            let word="";
+            let arr = [];
+            let word = "";
             //input += " "; // see optimization
             for (const char of input) {
-                if (char!=" ") {
+                if (char != " ") {
                     word += char;
                 } else {
                     arr.push(word);
-                    word="";
+                    word = "";
                 }
             }
             arr.push(word);
             return arr;
         };
 
-        const input = userInput(); 
-        console.log("Words",aFunctionLikeSplit(input));
+        const input = userInput();
+        //console.log("Words Array", aFunctionLikeSplit(input));
         const wordPositions = longestWordsPositions(input);
-        console.log("Positions", wordPositions.positions);
         const words = longestWords(wordPositions, input);
-        console.log("Words", words);
     </script>
 </body>
 
