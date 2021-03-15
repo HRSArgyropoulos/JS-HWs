@@ -1,1 +1,1 @@
-# Javascript-HW-1-Remodel
+# Vanilla-JS-Scripts
