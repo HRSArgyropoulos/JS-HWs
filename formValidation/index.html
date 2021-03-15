@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Form Validation Js</title>
+    <script src="js/form.js" defer></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="lft-side">
+            <h2>Does these answered questions help you? </h2>
+            <br>
+            <p>Sometimes people have the same question so we already answered some frequent ones. Have a look and select
+                one of the below categories.</p>
+            <br>
+            <p>You didn't find what you were looking for? No problem. Fill in our contact-form and we will get back to
+                you as quick as possible.</p>
+            <br>
+            <div id="faq">
+                <ul>
+                    <li><a href="#">
+                            <i class="fas fa-credit-card"></i>
+                            Why does my card keeps getting declined?</a></li>
+                    <li><a href="#">
+                            <i class="fas fa-truck"></i>
+                            I haven't received my product yet. When is it expected to arrive?</a></li>
+                    <li><a href="#">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            My product came in and it is not working. How can i return or issue a refund for my
+                            order?</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="form">
+            <div id="form-wrapper">
+                <form id="contact-form" name="contact-form">
+                    <label for="first-name">First name *</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="Type your first name">
+                    <label for="last-name">Last name *</label>
+                    <input type="text" id="last-name" name="last-name" placeholder="Type your last name">
+                    <label for="email">E-mail address *</label>
+                    <input type="text" id="email" name="email" placeholder="Type your email address">
+                    <label for="email2">Confirm e-mail address *</label>
+                    <input type="text" id="email2" name="email2" placeholder="Retype your email address" >
+                    <label for="tel">Telephone number *</label>
+                    <input type="text" id="tel" name="tel" placeholder="69 xxxxxxxx">
+                    <label for="address">Address *</label>
+                    <input type="text" id="address" name="address" placeholder="Type your physical address">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" style="resize: none; width: 100%" rows="5" maxlength="250"
+                        ></textarea>
+                        <small>* asterisk = required fields</small>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <svg class="wave-1hkxOo" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"
+        preserveAspectRatio="none">
+        <path class="wavePath-haxJK1"
+            d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z"
+            fill="currentColor"></path>
+    </svg>
+</body>
+
+</html>

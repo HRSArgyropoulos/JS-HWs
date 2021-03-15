@@ -1,0 +1,129 @@
+:root {
+    --drk-black: rgb(20,29,38);
+    --drk-purple: #c51f5d;
+    --drk-green: rgb(35, 255, 108);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background:var(--drk-black);
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.5em;
+}
+
+ul {
+    list-style: none;
+}
+
+#container {
+    display: flex;
+    max-width: 1800px;
+    min-height: 85vh;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#container > * {
+    flex: 1 0 50%;
+}
+
+#container:first-child {
+    padding: 1rem;
+}
+
+#faq a {
+    display: block;
+    padding: 0.7rem 0.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+#faq a:hover {
+    background-color: var(--drk-purple);
+}
+
+#faq i {
+    margin-right: 0.5rem;
+}
+
+ul > * {
+    background-color:#243447;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+form {
+    font-size: 1.2em;
+}
+
+
+#form-wrapper {
+    max-width: 500px;
+    width: 90vw;
+    margin: 0 auto;
+    background-color: rgba(233, 233, 233,0.2);
+    backdrop-filter: saturate(180%) blur(10px);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px 0 rgb(0 0 0 / 50%);
+}
+
+form {
+    width: 80%;
+    padding: 2em 0;
+}
+
+form input{
+    display: block;
+    height: 2.5em;
+    width: 100%;
+    margin-bottom: 1rem;
+    
+    border-radius: 5px;
+}
+
+form input, form textarea {
+    margin-top: 0.1rem;
+    padding-left: 0.5rem;
+}
+
+form textarea {
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+form button {
+    display: block;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 1px 1px 5px black;
+    margin: 20px auto 0 auto;
+    background-color: var(--drk-purple);
+    color: white;
+    font-family: 'Raleway' , sans-serif;
+    font-size: 0.9em;
+    padding: 0.5rem 1.3rem;
+}
+
+form input:focus {
+    outline: none;
+    background-color: rgb(209, 238, 255);
+}
+
+.error {
+    border: 2px solid red;
+}
+
+.valid {
+    border: 2px solid rgb(63, 140, 255);
+}
